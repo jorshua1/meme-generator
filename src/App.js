@@ -9,7 +9,7 @@ import Counter from "./Counter";
 function App() {
   return (
     <div>
-    <Prueba />
+    <Counter />
     </div>
   );
 }
