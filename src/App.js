@@ -1,14 +1,15 @@
 import React from "react";
 import Navbar from "./Components/Navbar";
 import Form from "./Components/Form";
-import Preview from "./Components/Preview";
+import Boxes from "./Components/Boxes";
 
 function App(){
   return(
     <div>
-      <Navbar />
-      <Form />
+      {/* <Navbar /> */}
+      {/* <Form /> */}
       {/* <Preview /> */}
+      <Boxes></Boxes>
     </div>
   )
 }
