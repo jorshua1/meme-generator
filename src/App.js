@@ -9,7 +9,7 @@ function App(){
       {/* <Navbar /> */}
       {/* <Form /> */}
       {/* <Preview /> */}
-      <Boxes></Boxes>
+      <Boxes darkMode={true} />
     </div>
   )
 }
