@@ -21,8 +21,7 @@ export default function Boxes(props) {
    * in state if you need a reminder on how to do this
    */
 
-  const [squares, setSquares] = React.useState(boxesData);
-
+  /* 
   //recibe un parametro, en este caso
   function toggle(id) {
     //Actualizo el estado creando una funcion la cual recibe el estado anterior devolviendo un nuevo array
@@ -37,7 +36,21 @@ export default function Boxes(props) {
         //map hace una especie de foreach y empieza a comparar antiguo con nuevo
       });
     });
+  } */
+
+  const [squares, setSquares] = React.useState(boxesData);
+
+  function toggle(id) {
+    setSquares((prevSquare) => {
+      //creo un nuevo arreglo para actualizar el estado por medio de map
+      //recorro las posiciones por medio de la variable square, todo lo que haga dentro de esa funcion se guardara en dicha posicion
+      return prevSquare.map((square) => {
+        //verifico si el valor pasado por medio de la funcion del componente hijo es identico a la posicion actual de la actualizacion
+        return square.id === id ? { ...square, on: !square.on } : square;
+      });
+    });
   }
+
   //no usa llaves para hacer uso implicitamente de la palabra return de la arrow function
   const squareElements = squares.map((square) => (
     <Box key={square.id} id={square.id} on={square.on} toggle={toggle} />
