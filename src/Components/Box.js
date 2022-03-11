@@ -1,28 +1,19 @@
 import React from "react";
 
-
-
 function Box(props) {
-  const [on, setOn] = React.useState(props.on);
-
-  function handleClick() {
-    setOn(!on);
-    console.log("changed");
-  }
   const styles = {
-    backgroundColor: on ? "#222" : "transparent",
-    color: on ? "#fff" : "#222",
+    backgroundColor: props.on ? "#222" : "transparent",
+    color: props.on ? "#fff" : "#222",
   };
-
-  console.log(on);
 
   return (
     <div
       style={styles}
       className="flex items-center justify-center m-2 w-32 h-32 rounded-lg"
-      onClick={handleClick}
+    //   ejecuta una funcion, dicha funcion ejecuta toggle pasando el id del objeto clickeado
+      onClick={() => props.toggle(props.id)}
     >
-      <p>{on ? "habilitado" : "deshabilitado"}</p>
+      <p>{props.on ? "habilitado" : "deshabilitado"}</p>
     </div>
   );
 }

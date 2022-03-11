@@ -11,16 +11,36 @@ import Box from "./Box";
  */
 
 export default function Boxes(props) {
+  /**
+   * Challenge: use setSquares to update the
+   * correct square in the array.
+   *
+   * Make sure not to directly modify state!
+   *
+   * Hint: look back at the lesson on updating arrays
+   * in state if you need a reminder on how to do this
+   */
+
   const [squares, setSquares] = React.useState(boxesData);
-  console.log(props.darkMode);
 
-  const style = {
-    backgroundColor: props.darkMode ? "#222222" : "#CCCCCC",
-  };
-
+  //recibe un parametro, en este caso
+  function toggle(id) {
+    //Actualizo el estado creando una funcion la cual recibe el estado anterior devolviendo un nuevo array
+    setSquares((prevSquares) => {
+      //estamos creando un nuevo array sin modificar el original, tiene el mismo tamaño y contenido del original
+      return prevSquares.map((square) => {
+        //en cada ciclo de la funcion map verificamos si el id de square(nuevo array) es igual al id que se esta pasando
+        //el id del arreglo original, si es verdadero, reemplaza el contenido del estado anterior al nuevo, sino lo 
+        //deja igual (usa destructuracion para acceder al contenido implicito del objeto )
+        return square.id === id ? { ...square, on: !square.on } : square;
+        //es decir, crea un nuevo array con el tamaño del array anterior(prevSquares)
+        //map hace una especie de foreach y empieza a comparar antiguo con nuevo
+      });
+    });
+  }
   //no usa llaves para hacer uso implicitamente de la palabra return de la arrow function
   const squareElements = squares.map((square) => (
-    <Box key={square.id} on={square.on}></Box>
+    <Box key={square.id} id={square.id} on={square.on} toggle={toggle} />
   ));
 
   /**
